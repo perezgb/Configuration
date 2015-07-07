@@ -5,7 +5,6 @@ using System;
 using System.IO;
 using Microsoft.Framework.Configuration.Helper;
 using Microsoft.Framework.Configuration.Json;
-using Microsoft.Framework.Internal;
 
 namespace Microsoft.Framework.Configuration
 {
@@ -22,7 +21,7 @@ namespace Microsoft.Framework.Configuration
         /// <paramref name="configuration"/>.</param>
         /// <returns>The <see cref="IConfigurationBuilder"/>.</returns>
         public static IConfigurationBuilder AddJsonFile(
-            [NotNull] this IConfigurationBuilder configuration,
+            this IConfigurationBuilder configuration,
             string path)
         {
             return AddJsonFile(configuration, path, optional: false);
@@ -40,13 +39,13 @@ namespace Microsoft.Framework.Configuration
         /// <exception cref="FileNotFoundException">If <paramref name="optional"/> is <c>false</c> and the file cannot
         /// be resolved.</exception>
         public static IConfigurationBuilder AddJsonFile(
-            [NotNull] this IConfigurationBuilder configuration,
+            this IConfigurationBuilder configuration,
             string path,
             bool optional)
         {
             if (string.IsNullOrEmpty(path))
             {
-                throw new ArgumentException(Resources.Error_InvalidFilePath, nameof(path));
+                throw new ArgumentException(Resources.Error_InvalidFilePath, "path");
             }
 
             var fullPath = ConfigurationHelper.ResolveConfigurationFilePath(configuration, path);

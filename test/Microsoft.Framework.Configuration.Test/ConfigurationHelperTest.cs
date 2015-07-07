@@ -32,7 +32,7 @@ namespace Microsoft.Framework.Configuration.Test
             var expectErrorMessage = Resources.FormatError_MissingBasePath(
                 testFile,
                 typeof(IConfigurationBuilder).Name,
-                nameof(mockSourceRoot.BasePath));
+                "BasePath");
 
             var exception = Assert.Throws<InvalidOperationException>(() =>
             {

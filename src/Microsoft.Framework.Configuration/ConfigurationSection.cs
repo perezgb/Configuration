@@ -5,7 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Framework.Configuration.Internal;
-using Microsoft.Framework.Internal;
 
 namespace Microsoft.Framework.Configuration
 {
@@ -38,13 +37,13 @@ namespace Microsoft.Framework.Configuration
             }
         }
 
-        public string Get([NotNull] string key)
+        public string Get(string key)
         {
             string value;
             return TryGet(key, out value) ? value : null;
         }
 
-        public bool TryGet([NotNull] string key, out string value)
+        public bool TryGet(string key, out string value)
         {
             // If a key in the newly added configuration source is identical to a key in a 
             // formerly added configuration source, the new one overrides the former one.
@@ -60,7 +59,7 @@ namespace Microsoft.Framework.Configuration
             return false;
         }
 
-        public void Set([NotNull] string key, [NotNull] string value)
+        public void Set(string key, string value)
         {
             if (!_sources.Any())
             {
@@ -90,7 +89,7 @@ namespace Microsoft.Framework.Configuration
             return GetConfigurationSectionsImplementation(string.Empty);
         }
 
-        public IEnumerable<KeyValuePair<string, IConfiguration>> GetConfigurationSections([NotNull] string key)
+        public IEnumerable<KeyValuePair<string, IConfiguration>> GetConfigurationSections(string key)
         {
             return GetConfigurationSectionsImplementation(key + Constants.KeyDelimiter);
         }

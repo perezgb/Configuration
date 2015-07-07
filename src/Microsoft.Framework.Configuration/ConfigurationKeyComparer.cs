@@ -10,12 +10,17 @@ namespace Microsoft.Framework.Configuration
     {
         private const char Separator = ':';
 
-        public static ConfigurationKeyComparer Instance { get; } = new ConfigurationKeyComparer();
+        private static readonly ConfigurationKeyComparer _instance = new ConfigurationKeyComparer();
+
+        public static ConfigurationKeyComparer Instance
+        {
+            get { return _instance; }
+        }
 
         public int Compare(string x, string y)
         {
-            var xParts = x?.Split(Separator) ?? new string[0];
-            var yParts = y?.Split(Separator) ?? new string[0];
+            var xParts = x != null ? x.Split(Separator) : new string[0];
+            var yParts = y != null ? y.Split(Separator) : new string[0];
 
             // Compare each part until we get two parts that are not equal
             for (int i = 0; i < Math.Min(xParts.Length, yParts.Length); i++)

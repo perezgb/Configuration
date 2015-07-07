@@ -14,7 +14,7 @@ namespace Microsoft.Framework.Configuration.CommandLine
         {
             if (args == null)
             {
-                throw new ArgumentNullException(nameof(args));
+                throw new ArgumentNullException("args");
             }
 
             Args = args;
@@ -131,14 +131,14 @@ namespace Microsoft.Framework.Configuration.CommandLine
                 {
                     throw new ArgumentException(
                         Resources.FormatError_InvalidSwitchMapping(mapping.Key),
-                        nameof(switchMappings));
+                        "switchMappings");
                 }
 
                 if (switchMappingsCopy.ContainsKey(mapping.Key))
                 {
                     throw new ArgumentException(
                         Resources.FormatError_DuplicatedKeyInSwitchMappings(mapping.Key),
-                        nameof(switchMappings));
+                        "switchMappings");
                 }
 
                 switchMappingsCopy.Add(mapping.Key, mapping.Value);

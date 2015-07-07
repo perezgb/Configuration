@@ -17,7 +17,7 @@ namespace Microsoft.Framework.Configuration.Helper
                     throw new InvalidOperationException(Resources.FormatError_MissingBasePath(
                         path,
                         typeof(IConfigurationBuilder).Name,
-                        nameof(configuration.BasePath)));
+                        "BasePath"));
                 }
                 else
                 {

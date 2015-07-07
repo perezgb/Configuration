@@ -35,10 +35,7 @@ namespace Microsoft.Framework.Configuration
             }
         }
 
-        public string BasePath
-        {
-            get;
-        }
+        public string BasePath { get; private set; }
 
         /// <summary>
         /// Adds a new configuration source.

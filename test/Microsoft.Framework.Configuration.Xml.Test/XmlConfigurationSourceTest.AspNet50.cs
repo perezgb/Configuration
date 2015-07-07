@@ -8,7 +8,6 @@ using System;
 using System.Security.Cryptography;
 using System.Security.Cryptography.Xml;
 using System.Xml;
-using Microsoft.AspNet.Testing.xunit;
 using Microsoft.Framework.Configuration.Test;
 using Xunit;
 
@@ -16,8 +15,6 @@ namespace Microsoft.Framework.Configuration.Xml.Test
 {
     public partial class XmlConfigurationSourceTest
     {
-        [ConditionalFact]
-        [FrameworkSkipCondition(RuntimeFrameworks.Mono)]
         public void LoadKeyValuePairsFromValidEncryptedXml()
         {
             var xml = @"

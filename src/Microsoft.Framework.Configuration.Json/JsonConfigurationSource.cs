@@ -33,7 +33,7 @@ namespace Microsoft.Framework.Configuration
         {
             if (string.IsNullOrEmpty(path))
             {
-                throw new ArgumentException(Resources.Error_InvalidFilePath, nameof(path));
+                throw new ArgumentException(Resources.Error_InvalidFilePath, "path");
             }
 
             Optional = optional;
@@ -43,12 +43,12 @@ namespace Microsoft.Framework.Configuration
         /// <summary>
         /// Gets a value that determines if this instance of <see cref="JsonConfigurationSource"/> is optional.
         /// </summary>
-        public bool Optional { get; }
+        public bool Optional { get; private set; }
 
         /// <summary>
         /// The absolute path of the file backing this instance of <see cref="JsonConfigurationSource"/>.
         /// </summary>
-        public string Path { get; }
+        public string Path { get; private set; }
 
         /// <summary>
         /// Loads the contents of the file at <see cref="Path"/>.
